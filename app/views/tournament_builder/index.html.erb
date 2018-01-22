@@ -1,0 +1,60 @@
+<div class="row">
+    <div id='main' class='col-sm-4'>
+        <h1>Tournament Builder</h1>
+            <div class="format-buttons">
+                <button class="btn btn-primary first" data-bind="click: function() { standardFormat(false) }, css: { 'not-selected': standardFormat() }">Snake Format</button>
+                <button class="btn btn-primary second" data-bind="click: function() { standardFormat(true) }, css: { 'not-selected': !standardFormat() }">Standard Format</button>
+            </div>
+        <div>
+            <p>Number Of Pools</p>
+            <input type="number" data-bind="value: numOfPools">
+        </div>
+        <div>
+            <p>Number Of Teams</p>
+            <input type="number" data-bind="value: numOfTeams">
+        </div>
+        <div>
+            <p>Number Of Rounds</p>
+            <input type="number" data-bind="value: numOfRounds">
+        </div>
+        <div>
+            <button class="btn btn-primary" data-bind="click: generateTournament">Generate Tournament</button>
+        </div>
+        <div>
+            <div data-bind="foreach: pools">
+            <div>
+                <button class="btn btn-info" data-bind="text: 'Show details for ' + name, click: function() { $parent.showPool($data) }"></button>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="pool-details col-sm-8" style="display:none" data-bind="visible: !!selectedPool, with: selectedPool">
+        <div class="row">
+            <h1 data-bind="text: name"></h1>
+            <div class="teams-container col-sm-6">
+                <h3>Teams</h3>
+                <!-- ko if: teams.length == 0-->
+                    There were not enough teams for this pool to have any :(
+                <!-- /ko -->
+                <div data-bind="foreach: teams">
+                    <div>
+                        <button class="btn btn-warning" data-bind="text: $data, click: function() { $parents[1].selectedTeam($data) }"></button>
+                    </div>
+                </div>
+            </div>
+            <div class="games-container">
+                <h3>Games</h3>
+                <!-- ko if: games.length == 0-->
+                    There were not enough teams for this pool to have games :(
+                <!-- /ko -->
+                <div class="col-sm-6" data-bind="foreach: games">
+                    <div class='game-container' data-bind="attr:{ title : 'Game ID: ' + id }, css: { highlight: $parents[1].highlightGame($data) }">
+                        <p data-bind="text: teams[0]"></p> 
+                        vs 
+                        <p data-bind="text: teams[1]"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

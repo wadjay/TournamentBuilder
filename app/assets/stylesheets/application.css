@@ -1,0 +1,62 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require bootstrap
+ */
+
+ input {
+     display: inline-block;
+ }
+
+ p {
+     display: inline-block;
+ }
+
+ #main {
+     display: inline-block;
+     padding-left: 2em;
+ }
+
+button {
+     margin: .5em;
+ }
+
+.highlight {
+    color: white;
+    background-color: #f0ad4e;
+}
+
+.game-container {
+    width: 20em;
+}
+
+.format-buttons button {
+    margin-right: -1em;
+    margin-bottom: .5em;
+}
+
+.not-selected {
+    background-color: white;
+    color: #337ab7;
+}
+
+.first {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.second {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
